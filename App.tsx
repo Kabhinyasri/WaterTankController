@@ -2,7 +2,6 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DashboardScreen from "./src/screens/Dashboard";
-import ControlScreen from "./src/screens/Control";
 import HistoryScreen from "./src/screens/History";
 import SettingsScreen from "./src/screens/Settings";
 
@@ -13,7 +12,6 @@ const App: React.FC = () => {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="Dashboard" component={DashboardScreen} />
-        <Tab.Screen name="Control" component={ControlScreen} />
         <Tab.Screen name="History" component={HistoryScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>

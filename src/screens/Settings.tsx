@@ -4,7 +4,25 @@ import { View, Text, Switch, StyleSheet } from "react-native";
 const SettingsScreen: React.FC = () => {
   const [notifications, setNotifications] = useState(true);
   const [autoPump, setAutoPump] = useState(false);
+  const [manualPump, setManualPump] = useState(true); // Manual starts as ON
 
+  // Function to handle Automatic Mode toggle
+  const toggleAutoPump = (value: boolean) => {
+    setAutoPump(value);
+    if (value) {
+      setManualPump(false); // Turn OFF Manual Mode when Auto is ON
+    }
+  };
+
+  // Function to handle Manual Mode toggle
+  const toggleManualPump = (value: boolean) => {
+    setManualPump(value);
+    if (value) {
+      setAutoPump(false); // Turn OFF Auto Mode when Manual is ON
+    }
+  };
+
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
@@ -15,8 +33,13 @@ const SettingsScreen: React.FC = () => {
       </View>
 
       <View style={styles.settingRow}>
-        <Text style={styles.settingLabel}>Auto Pump Control</Text>
-        <Switch value={autoPump} onValueChange={setAutoPump} />
+        <Text style={styles.settingLabel}>Automatic Mode</Text>
+        <Switch value={autoPump} onValueChange={toggleAutoPump} />
+      </View>
+
+      <View style={styles.settingRow}>
+        <Text style={styles.settingLabel}>Manual Mode</Text>
+        <Switch value={manualPump} onValueChange={toggleManualPump} />
       </View>
     </View>
   );
